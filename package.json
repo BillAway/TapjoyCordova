@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-tapjoyba",
+  "version": "1.0.0",
+  "description": "Cordova Plugin for access to the Tapjoy platform.",
+  "cordova": {
+    "id": "cordova-plugin-market",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/billAway/TapjoyCordova"
+  },
+  "keywords": [
+    "cordova",
+    "cordova-ios",
+    "tapjoy"
+  ],
+  "author": "Billaway",
+  "license": "MIT",
+}

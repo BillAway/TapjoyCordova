@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-tapjoyba" version="1.2.0">
+    <name>TapjoyBA</name>
+    <description>Cordova Plugin for access to the Tapjoy platform.</description>
+    <license>Apache 2.0</license>
+    <keywords></keywords>
+    <js-module src="www/tapjoyba.js" name="TapjoyBA">
+    </js-module>
+
+	<platform name="android">
+		<js-module name="TapjoyBA" src="www/tapjoyba.js">
+			<clobbers target="TapjoyBA" />
+		</js-module>
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="TapjoyBA">
+				<param name="android-package" value="org.apache.cordova.tapjoy.TapjoyPlugin" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/*">
+				<uses-permission android:name="android.permission.INTERNET" />
+				<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+				<uses-permission android:name="android.permission.WAKE_LOCK" />
+		</config-file>
+
+	</platform>
+</plugin>
