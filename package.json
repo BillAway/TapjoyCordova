@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Cordova Plugin for access to the Tapjoy platform.",
   "cordova": {
-    "id": "cordova-plugin-market",
+    "id": "cordova-plugin-tapjoyba",
     "platforms": [
       "android",
       "ios"
