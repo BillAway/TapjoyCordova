@@ -172,7 +172,7 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
 
         // Connect with the Tapjoy server.  Call this when the application first starts.
         // REPLACE THE SDK KEY WITH YOUR TAPJOY SDK Key.
-        String tapjoySDKKey = "u6SfEbh_TA-WMiGqgQ3W8QECyiQIURFEeKm0zbOggubusy-o5ZfXp33sTXaD";
+        String tapjoySDKKey = "lGE8RIvpRbuGf-IcXZTjFAECqkSxNjuRiCS1oRMHRpmaK0PH9MAs7u7q4iRO";
 
         com.tapjoy.Tapjoy.setGcmSender("34027022155");
 
@@ -240,8 +240,6 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
         Log.e(TAG, "Tapjoy connect call failed");
         //updateTextInUI("Tapjoy connect failed!");
     }
-
-
 
     private void showDirectPlayContent() {
         // Check if content is available and if it is ready to show
