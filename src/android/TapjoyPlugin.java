@@ -148,6 +148,15 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
             return true;
         }else if (action.equals("inittapjoy")){
             connectToTapjoy();
+            return true;
+        }
+        else if(action.equals("callShowOffers")){
+            callShowOffers();
+            return true;
+        }
+        else if(action.equals("showDirectPlayContent")){
+            showDirectPlayContent();
+            return true;
         }
         return false;
     }
