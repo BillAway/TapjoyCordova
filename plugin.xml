@@ -25,6 +25,6 @@
 		</config-file>
 
 		<source-file src="src/android/TapjoyPlugin.java" target-dir="src/org/apache/cordova/tapjoy" />
-        <source-file src="src/android/libs/tapjoy.jar" target-dir="libs" />
+        <source-file src="src/android/libs/tapjoyconnect.jar" target-dir="libs" />
 	</platform>
 </plugin>

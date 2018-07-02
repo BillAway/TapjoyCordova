@@ -31,30 +31,7 @@ import com.tapjoy.Tapjoy;
 import com.tapjoy.TapjoyConnectFlag;
 import com.tapjoy.TapjoyLog;
 
-import android.app.Application;
-
 import java.util.Hashtable;
-
-class MyApp extends Application {
-    //private static MyApp instance;
-    private static Context mContext;
-
-    public static MyApp getInstance() {
-        return null;
-    }
-
-    public static Context getContext() {
-        //  return instance.getApplicationContext();
-        return mContext;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        //  instance = this;
-        mContext = getApplicationContext();
-    }
-}
 
 //@SuppressLint("NewApi")
 public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, TJPlacementVideoListener {
@@ -97,32 +74,7 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
 
         // Best Practice: We recommend calling getCurrencyBalance as often as possible so the user's balance is always up-to-date.
         //Tapjoy.getCurrencyBalance(TapjoyEasyApp.this);
-
-        // Begin preloading the next placement after the previous one is dismissed
-        directPlayPlacement = Tapjoy.getPlacement("video_unit", this);
-
-        // Set Video Listener to anonymous callback
-        directPlayPlacement.setVideoListener(new TJPlacementVideoListener() {
-            @Override
-            public void onVideoStart(TJPlacement placement) {
-                Log.i(TAG, "Video has started has started for: " + placement.getName());
-            }
-
-            @Override
-            public void onVideoError(TJPlacement placement, String errorMessage) {
-                Log.i(TAG, "Video error: " + errorMessage +  " for " + placement.getName());
-            }
-
-            @Override
-            public void onVideoComplete(TJPlacement placement) {
-                Log.i(TAG, "Video has completed for: " + placement.getName());
-
-                // Best Practice: We recommend calling getCurrencyBalance as often as possible so the user�s balance is always up-to-date.
-                //Tapjoy.getCurrencyBalance(TapjoyEasyApp.this);
-            }
-        });
-
-        directPlayPlacement.requestContent();
+        
     }
 
     @Override
@@ -186,31 +138,24 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
 
 
     private void connectToTapjoy() {
+        com.tapjoy.Tapjoy.setDebugEnabled(true);
+        
         // OPTIONAL: For custom startup flags.
         Hashtable<String, Object> connectFlags = new Hashtable<String, Object>();
         connectFlags.put(TapjoyConnectFlag.ENABLE_LOGGING, "true");
 
         // If you are not using Tapjoy Managed currency, you would set your own user ID here.
-        //	connectFlags.put(TapjoyConnectFlag.USER_ID, "A_UNIQUE_USER_ID");
+        //	connectFlags.put(TapjoyConnectFlag.USER_ID, "A_UNIQUE_USER_ID");        
 
         // Connect with the Tapjoy server.  Call this when the application first starts.
         // REPLACE THE SDK KEY WITH YOUR TAPJOY SDK Key.
         String tapjoySDKKey = "lGE8RIvpRbuGf-IcXZTjFAECqkSxNjuRiCS1oRMHRpmaK0PH9MAs7u7q4iRO";
 
         com.tapjoy.Tapjoy.setGcmSender("34027022155");
+        
 
         // NOTE: This is the only step required if you're an advertiser.
-        com.tapjoy.Tapjoy.setActivity(this.cordova.getActivity());
-        Context context=this.cordova.getActivity().getApplicationContext();//MyApp.getContext();//
-        if(context==null){
-
-            Log.d("CORDOVA CONTEXT: ","IS NULL");
-        }else{
-
-            Log.d("CORDOVA CONTEXT: ","NOT NULL");
-        }
-
-        com.tapjoy.Tapjoy.connect(context, tapjoySDKKey, connectFlags, new TJConnectListener() {
+        com.tapjoy.Tapjoy.connect( this.cordova.getActivity().getApplicationContext(), tapjoySDKKey, connectFlags, new TJConnectListener() {
             @Override
             public void onConnectSuccess() {
                 TapjoyPlugin.this.onConnectSuccess();
@@ -225,7 +170,7 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
     private void onConnectSuccess() {
 
         // Start preloading direct play event upon successful connect
-        directPlayPlacement = com.tapjoy.Tapjoy.getPlacement("video_unit", this);
+        directPlayPlacement = com.tapjoy.Tapjoy.getPlacement("Video Placement", this);
 
         // Set Video Listener to anonymous callback
         directPlayPlacement.setVideoListener(new TJPlacementVideoListener() {
@@ -249,21 +194,21 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
 
         directPlayPlacement.requestContent();
 
-        // NOTE:  The get/spend/award currency methods will only work if your virtual currency
-        // is managed by Tapjoy.
-        //
-        // For NON-MANAGED virtual currency, Tapjoy.setUserID(...)
-        // must be called after requestTapjoyConnect.
+//        // NOTE:  The get/spend/award currency methods will only work if your virtual currency
+//        // is managed by Tapjoy.
+//        //
+//        // For NON-MANAGED virtual currency, Tapjoy.setUserID(...)
+//        // must be called after requestTapjoyConnect.
 
-        // Setup listener for Tapjoy currency callbacks
-        com.tapjoy.Tapjoy.setEarnedCurrencyListener(new TJEarnedCurrencyListener() {
-            @Override
-            public void onEarnedCurrency(String currencyName, int amount) {
-                //earnedCurrency = true;
-                //updateTextInUI("You've just earned " + amount + " " + currencyName);
-                //showPopupMessage("You've just earned " + amount + " " + currencyName);
-            }
-        });
+//        // Setup listener for Tapjoy currency callbacks
+//        com.tapjoy.Tapjoy.setEarnedCurrencyListener(new TJEarnedCurrencyListener() {
+//            @Override
+//            public void onEarnedCurrency(String currencyName, int amount) {
+//                //earnedCurrency = true;
+//                //updateTextInUI("You've just earned " + amount + " " + currencyName);
+//                //showPopupMessage("You've just earned " + amount + " " + currencyName);
+//            }
+//        });
     }
 
     /**
@@ -272,27 +217,36 @@ public class TapjoyPlugin extends CordovaPlugin implements TJPlacementListener, 
     private void onConnectFail() {
         Log.e(TAG, "Tapjoy connect call failed");
         //updateTextInUI("Tapjoy connect failed!");
-    }
+    } 
+
+
 
     private void showDirectPlayContent() {
-        // Check if content is available and if it is ready to show
-        if (directPlayPlacement.isContentAvailable()) {
-            if (directPlayPlacement.isContentReady()) {
-                directPlayPlacement.showContent();
-            } else {
-                //setButtonEnabledInUI(currentButton, true);
-                //updateTextInUI("Direct play video not ready to show");
-            }
+//        // Check if content is available and if it is ready to show
+//        if (directPlayPlacement.isContentAvailable()) {
+//            if (directPlayPlacement.isContentReady()) {
+//                directPlayPlacement.showContent();
+//            } else {
+//                //setButtonEnabledInUI(currentButton, true);
+//                //updateTextInUI("Direct play video not ready to show");
+//            }
 
-        } else {
-            //setButtonEnabledInUI(currentButton, true);
-            //updateTextInUI("No direct play video to show");
-        }
+//        } else {
+//            //setButtonEnabledInUI(currentButton, true);
+//            //updateTextInUI("No direct play video to show");
+//        }
+
+            
+        directPlayPlacement = Tapjoy.getPlacement("Video Placement", this);
+
+        directPlayPlacement.setVideoListener(this);
+        directPlayPlacement.requestContent();
+
     }
 
     private void callShowOffers() {
         // Construct TJPlacement to show Offers web view from where users can download the latest offers for virtual currency.
-        offerwallPlacement = com.tapjoy.Tapjoy.getPlacement("offerwall_unit", new TJPlacementListener() {
+        offerwallPlacement = com.tapjoy.Tapjoy.getPlacement("Offerwall Placement", new TJPlacementListener() {
             @Override
             public void onRequestSuccess(TJPlacement placement) {
                 //updateTextInUI("onRequestSuccess for placement " + placement.getName());
