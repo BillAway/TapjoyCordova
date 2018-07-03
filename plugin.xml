@@ -9,9 +9,7 @@
     </js-module>
 
 	<platform name="android">
-		<js-module name="TapjoyBA" src="www/tapjoyba.js">
-			<clobbers target="TapjoyBA" />
-		</js-module>
+		
 		<config-file parent="/*" target="res/xml/config.xml">
 			<feature name="TapjoyBA">
 				<param name="android-package" value="org.apache.cordova.tapjoy.TapjoyPlugin" />
