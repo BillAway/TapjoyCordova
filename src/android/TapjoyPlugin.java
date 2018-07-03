@@ -33,6 +33,29 @@ import com.tapjoy.TapjoyLog;
 
 import java.util.Hashtable;
 
+import android.app.Application;
+
+
+class MyApp extends Application {
+    //private static MyApp instance;
+    private static Context mContext;
+
+    public static MyApp getInstance() {
+        return null;
+    }
+
+    public static Context getContext() {
+        //  return instance.getApplicationContext();
+        return mContext;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //  instance = this;
+        mContext = getApplicationContext();
+    }
+}
 //@SuppressLint("NewApi")
 public class TapjoyPlugin extends CordovaPlugin {
     //implements TJPlacementListener, TJPlacementVideoListener 
@@ -98,10 +121,18 @@ public class TapjoyPlugin extends CordovaPlugin {
         String tapjoySDKKey = "lGE8RIvpRbuGf-IcXZTjFAECqkSxNjuRiCS1oRMHRpmaK0PH9MAs7u7q4iRO";
 
         com.tapjoy.Tapjoy.setGcmSender("34027022155");
-        
-
         // NOTE: This is the only step required if you're an advertiser.
-        com.tapjoy.Tapjoy.connect( this.cordova.getActivity().getApplicationContext(), tapjoySDKKey, connectFlags, new TJConnectListener() {
+        com.tapjoy.Tapjoy.setActivity(this.cordova.getActivity());
+        Context context=this.cordova.getActivity().getApplicationContext();//MyApp.getContext();//
+        if(context==null){
+
+            Log.d("CORDOVA CONTEXT: ","IS NULL");
+        }else{
+
+            Log.d("CORDOVA CONTEXT: ","NOT NULL");
+        }
+
+        com.tapjoy.Tapjoy.connect(context, tapjoySDKKey, connectFlags, new TJConnectListener() {
             @Override
             public void onConnectSuccess() {
                 //TapjoyPlugin.this.onConnectSuccess();
@@ -112,6 +143,7 @@ public class TapjoyPlugin extends CordovaPlugin {
                 //TapjoyPlugin.this.onConnectFail();
             }
         });
+
     }
 //    private void onConnectSuccess() {
 
