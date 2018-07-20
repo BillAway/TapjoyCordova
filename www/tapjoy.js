@@ -455,7 +455,7 @@ Tapjoy.prototype.setDisplayAdSize= function(size, successCallback, failureCallba
 
 //*********************** custom ba  */
 
-Tapjoy.prototype.baInit=function(userID,appId,secretKey){
+Tapjoy.prototype.baInit=function(userID,appID,secretKey){
     if(!isAndroid()){
         return cordova.exec(
             function(){},
