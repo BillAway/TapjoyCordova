@@ -5,9 +5,6 @@
     <description>Cordova Plugin for access to the Tapjoy platform.</description>
     <license>Apache 2.0</license>
     <keywords></keywords>
-    <js-module src="www/tapjoy.js" name="Tapjoy">
-        <clobbers target="Tapjoy" />
-    </js-module>
 
    <platform name="android">
 		
