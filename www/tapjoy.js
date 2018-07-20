@@ -15,7 +15,7 @@ Tapjoy = function() {
     Tapjoy.eventDict = {};
 };
 function isAndroid(){
-    return "Android"==(navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+    return "Android"==((navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null");
 }
 Tapjoy.prototype.TJC_DISPLAY_AD_SIZE_320X50 = "320x50";
 Tapjoy.prototype.TJC_DISPLAY_AD_SIZE_640X100 = "640x100";
