@@ -5,7 +5,8 @@
     <description>Cordova Plugin for access to the Tapjoy platform.</description>
     <license>Apache 2.0</license>
     <keywords></keywords>
-    <js-module src="www/tapjoyba.js" name="TapjoyBA">
+    <js-module src="www/tapjoy.js" name="Tapjoy">
+        <clobbers target="Tapjoy" />
     </js-module>
 
 	<platform name="android">
@@ -25,4 +26,55 @@
 		<source-file src="src/android/TapjoyPlugin.java" target-dir="src/org/apache/cordova/tapjoy" />
         <source-file src="src/android/libs/tapjoyconnect.jar" target-dir="libs" />
 	</platform>
+
+   <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="TapjoyPlugin">
+                <param name="ios-package" value="TapjoyPlugin" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/TapjoyPlugin.m" />
+        <source-file src="src/ios/TapjoyEventPlugin.m" />
+
+        <header-file src="src/ios/TapjoyPlugin.h" />
+        <header-file src="src/ios/TapjoyEventPlugin.h" />
+
+        <resource-file src="src/ios/Framework/Tapjoy.framework/Resources/TapjoyResources.bundle" />
+        <framework src="src/ios/Framework/Tapjoy.framework" custom="true"/>
+        <framework src="Security.framework"/>
+        <framework src="CoreData.framework" />
+        <framework src="EventKit.framework" />
+        <framework src="EventKitUI.framework"/>
+        <framework src="libsqlite3.0.dylib" />
+        <framework src="libxml2.dylib"/>
+        <framework src="libz.dylib"/>
+        <framework src="MapKit.framework" />
+        <framework src="MessageUI.framework"/>
+        <framework src="Social.framework" weak="true"/>
+        <framework src="StoreKit.framework" weak="true"/>
+        <framework src="Twitter.framework" weak="true"/>
+        <framework src="CoreTelephony.framework" weak="true"/>
+        <framework src="CoreMotion.framework"/>
+        <framework src="AdSupport.framework" weak="true"/>
+        <framework src="CoreLocation.framework" />
+        <framework src="ImageIO.framework"/>
+        <framework src="OpenAL.framework" />
+        <framework src="AssetsLibrary.framework" />
+        <framework src="UIKit.framework" weak="true"/>
+        <framework src="Foundation.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="AddressBook.framework" />
+        <framework src="AddressBookUI.framework" />
+        <framework src="AudioToolbox.framework" />
+        <framework src="AVFoundation.framework" weak="true"/>
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="MediaPlayer.framework" />
+        <framework src="QuartzCore.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="MobileCoreServices.framework"/>
+        <framework src="CoreMedia.framework" weak="true"/>
+
+    </platform>
 </plugin>
