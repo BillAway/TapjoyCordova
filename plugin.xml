@@ -9,6 +9,7 @@
         <clobbers target="Tapjoy" />
     </js-module>
 
+    <dependency id="org.apache.cordova.device" version=">=0.2.8"/>
 	<platform name="android">
 		
 		<config-file parent="/*" target="res/xml/config.xml">
