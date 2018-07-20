@@ -14,7 +14,9 @@ Tapjoy = function() {
     Tapjoy.serviceName = "TapjoyPlugin";
     Tapjoy.eventDict = {};
 };
-
+function isAndroid(){
+    return "Android"==(navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+}
 Tapjoy.prototype.TJC_DISPLAY_AD_SIZE_320X50 = "320x50";
 Tapjoy.prototype.TJC_DISPLAY_AD_SIZE_640X100 = "640x100";
 Tapjoy.prototype.TJC_DISPLAY_AD_SIZE_768X90	= "768x90";
@@ -454,7 +456,7 @@ Tapjoy.prototype.setDisplayAdSize= function(size, successCallback, failureCallba
 //*********************** custom ba  */
 
 Tapjoy.prototype.baInit=function(userID,appId,secretKey){
-    if(device.platform=="iOS"){
+    if(!isAndroid()){
         return cordova.exec(
             function(){},
             function(){console.log('tapjoy: could not connect to tapjoy.')},
@@ -479,7 +481,7 @@ Tapjoy.prototype.baInit=function(userID,appId,secretKey){
     }
 }
 Tapjoy.prototype.baShowOffers=function(){
-    if(device.platform=="iOS"){
+    if(!isAndroid()){
         return cordova.exec(
             function(){},
             function(){console.log('tapjoy: could not show offers.')},
@@ -499,7 +501,7 @@ Tapjoy.prototype.baShowOffers=function(){
     }
 }
 Tapjoy.prototype.baShowVideo=function(){
-    if(device.platform=="iOS"){
+    if(!isAndroid()){
         cordova.exec(
             function(){
                 cordova.exec(
