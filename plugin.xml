@@ -40,8 +40,11 @@
         <header-file src="src/ios/TapjoyPlugin.h" />
         <header-file src="src/ios/TapjoyEventPlugin.h" />
 
+        <framework src="src/ios/Framework/TrustDefenderMobile.framework" custom="true"/>
+
         <resource-file src="src/ios/Framework/Tapjoy.framework/Resources/TapjoyResources.bundle" />
         <framework src="src/ios/Framework/Tapjoy.framework" custom="true"/>
+
         <framework src="Security.framework"/>
         <framework src="CoreData.framework" />
         <framework src="EventKit.framework" />
