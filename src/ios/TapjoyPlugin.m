@@ -277,7 +277,7 @@
 	
 	NSLog(@"tap points callback ID: %@", self.tapPointsCallbackID);
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.tapPointsCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.tapPointsCallbackID];
 }
 
 
@@ -290,7 +290,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.tapPointsCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.tapPointsCallbackID];
 }
 
 
@@ -304,8 +304,7 @@
 	
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
-	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.spendTapPointsCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.spendTapPointsCallbackID];
 }
 
 
@@ -318,7 +317,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.spendTapPointsCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.spendTapPointsCallbackID];
 }
 
 
@@ -333,7 +332,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.awardTapPointsCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.awardTapPointsCallbackID];
 }
 
 
@@ -346,7 +345,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.awardTapPointsCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.awardTapPointsCallbackID];
 }
 
 
@@ -357,7 +356,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.fullScreenAdCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.fullScreenAdCallbackID];
 }
 
 - (void)getFullScreenAdError:(NSNotification*)notifyObj
@@ -367,7 +366,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.fullScreenAdCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.fullScreenAdCallbackID];
 }
      
 - (void)showOffersError:(NSNotification*)notifyObj
@@ -377,7 +376,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.offersCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.offersCallbackID];
 }
 
 - (void)tjcConnectSuccess:(NSNotification*)notifyObj
@@ -389,7 +388,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.connectCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.connectCallbackID];
 }
 
 
@@ -402,7 +401,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK 
 																	  messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.connectCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.connectCallbackID];
 }
 
 #pragma mark Tapjoy Video Ads Delegate Methods
@@ -414,7 +413,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.videoAdDelegateCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.videoAdDelegateCallbackID];
 }
 
 
@@ -425,7 +424,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.videoAdDelegateCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.videoAdDelegateCallbackID];
 }
 
 - (void)videoAdError:(NSString *)errorMsg
@@ -435,7 +434,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.videoAdDelegateCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.videoAdDelegateCallbackID];
 }
 
 
@@ -450,7 +449,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.displayAdCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.displayAdCallbackID];
 }
 
 
@@ -461,7 +460,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                       messageAsString:stringToReturn];
 	
-	[self.commandDelegate evalJs:[self.commandDelegate sendPluginResult:pluginResult callbackId:self.displayAdCallbackID]];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.displayAdCallbackID];
 }
 
 
